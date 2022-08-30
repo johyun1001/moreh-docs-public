@@ -1,2 +1,3 @@
 site_name: Moreh
-theme: flatly
+theme:
+  name: 'rtd-dropdown'
