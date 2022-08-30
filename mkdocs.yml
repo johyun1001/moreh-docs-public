@@ -1,3 +1,2 @@
 site_name: Moreh
-theme:
-  name: flatly
+theme: flatly
