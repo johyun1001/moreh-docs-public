@@ -18,19 +18,19 @@ conda create -y -n pytorch python=3.8
 conda activate pytorch
 ```
 
-1. pytorch 패키지 설치
+2. pytorch 패키지 설치
 
 ```bash
 conda install -y torchvision torchaudio numpy protobuf==3.13.0 pytorch==1.7.1 cpuonly -c pytorch
 ```
 
-1. moreh 솔루션 업데이트
+3. moreh 솔루션 업데이트
 
 ```bash
 update-moreh --force --target 22.8.0
 ```
 
-1. 정상 설치 확인
+4. 정상 설치 확인
 
 ```python
 (pytorch) ubuntu@ktlab2:~$ python
