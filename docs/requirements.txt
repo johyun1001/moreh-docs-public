@@ -66,5 +66,4 @@ zipp==3.8.0
     # via importlib-metadata
 mkdocs-material
 mkdocs-bootswatch
-mkdocs
     # add theme
