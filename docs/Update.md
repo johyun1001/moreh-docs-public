@@ -12,3 +12,6 @@
 ## v22.8.2
 - Corrected the behavior of pytorch_sample.py bundled in the HAC VM image
 - Supported software update on VMs not containing the moreh-switch-model command
+
+## v22.8.3
+- Hotfix for heartbeat thread issues
