@@ -9,3 +9,4 @@ Moreh AI Frameworks support multiple commands like below.
 reset gpu resource
 
 ### moreh-docker-run
+Moreh AI Framework(MAF)가 담긴 Docker Image를 실행합니다.
