@@ -3,3 +3,5 @@ site_author: Product Team
 site_description: Moreh AI Framework Documentation
 theme:
   name: flatly
+  font:
+    code: Roboto Mono
