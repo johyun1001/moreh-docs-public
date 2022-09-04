@@ -22,3 +22,5 @@ sudo moreh-docker-run --pullonly --target 22.8.0
 ```shell
 moreh-smi --reset
 ```
+
+> 위의 명령어로도 여전히 프로세스가 실행중인걸로 보인다면 `moreh-smi` 명령어에서 나오는 PID를 이용하여 강제로 종료시킬 수 있습니다.
