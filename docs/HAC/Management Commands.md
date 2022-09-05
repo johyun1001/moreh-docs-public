@@ -15,7 +15,7 @@ Moreh AI Framework(MAF)가 담긴 Docker Image를 실행합니다.
 Software-Defined Accelerator(SDA) Model을 변경하는 명령어입니다. 현재 지원하는 SDA Model은 다음과 같습니다.
 
 ```shell
-1. Small.64GB*
+1. Small.64GB
 2. Medium.128GB
 3. Large.256GB
 4. xLarge.512GB
