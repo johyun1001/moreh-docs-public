@@ -21,12 +21,23 @@ Processes:
 +----------------------------------------------------------+
 ```
 
-#### Arguments
-##### --reset
-reset gpu resource
+#### Supported Arguments
+##### **--reset**
+할당된 GPU 리소스를 리셋합니다
 
 ### moreh-docker-run
 Moreh AI Framework(MAF)가 담긴 Docker Image를 실행합니다.
+
+#### Supported Arguments
+##### **--pullonly**, **-p**
+해당 옵션값을 추가로 줄경우, MAF Container를 바로 실행하지않고 단순히 Image만 다운로드 받게 됩니다.
+해당 옵션값을 사용할때는 `--target` 옵션값을 꼭 같이 사용해야하며, `--target`옵션 값 뒤에는 아래 예시와 같이 버전을 명시해줘야합니다.
+```shell
+moreh-docker-run --pullonly --target 22.8.0
+```
+
+##### **--version**, **-v**
+MAF Docker Image 버전명을 보여줍니다.
 
 ### moreh-switch-model
 Software-Defined Accelerator(SDA) Model을 변경하는 명령어입니다. 현재 지원하는 SDA Model은 다음과 같습니다.
@@ -46,3 +57,5 @@ Software-Defined Accelerator(SDA) Model을 변경하는 명령어입니다. 현�
 12. 48xLarge.24576GB
 13. 1.5xLarge.768GB
 ```
+
+### update-moreh
