@@ -40,7 +40,7 @@ moreh-docker-run --pullonly --target 22.8.0
 MAF Docker Image 버전명을 보여줍니다.
 
 ### moreh-switch-model
-Software-Defined Accelerator(SDA) Model을 변경하는 명령어입니다. 현재 지원하는 SDA Model은 다음과 같습니다.
+Software-Defined Accelerator(SDA) Model을 변경하는 **대화형** 명령어입니다. 현재 지원하는 SDA Model은 다음과 같습니다. 번호로 SDA Model을 선택할수있고, q(또는 Q)로 대화를 종료 할 수 있습니다.
 
 ```shell
 1. Small.64GB
@@ -59,3 +59,11 @@ Software-Defined Accelerator(SDA) Model을 변경하는 명령어입니다. 현�
 ```
 
 ### update-moreh
+Moreh AI Framework(MAF)를 업데이트하는 명령어입니다. 기본적으로 해당 명령어 실행시 현재까지 배포된 버전중 최신버전으로 업데이트를 진행합니다.
+
+#### Supported Arguments
+##### **--force --target**
+MAF를 특정 버전으로 강제 다운(업)그레이드를 할수있는 옵션입니다. `--target`옵션뒤에 특정 버전을 아래와같이 기입해주시면 됩니다.
+```shell
+update-moreh --force --target 22.7.2
+```
