@@ -63,7 +63,7 @@ Moreh AI Framework(MAF)를 업데이트하는 명령어입니다. 기본적으�
 
 #### Supported Arguments
 ##### **--force --target**
-MAF를 특정 버전으로 강제 다운(업)그레이드를 할수있는 옵션입니다. `--target`옵션뒤에 특정 버전을 아래와같이 기입해주시면 됩니다.
+MAF를 특정 버전으로 강제 다운(업)그레이드를 할수있는 옵션입니다. `--target` 옵션뒤에는 특정 버전을 아래와 같이 기입 해주시면 됩니다.
 ```shell
 update-moreh --force --target 22.7.2
 ```
