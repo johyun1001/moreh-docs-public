@@ -2,9 +2,8 @@
 
 # Contact
 
-<p align="center">
-  <img src="../icon/moreh_icon.png" />
-</p>
+![Image title](moreh_icon.png)
+
 
 ## Homepage
 [https://moreh.io](https://moreh.io)
