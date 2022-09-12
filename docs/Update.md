@@ -1,5 +1,13 @@
 # Update History
 
+## v22.9.0
+- Supported 6- and 7-dimensional input/output tensors in elemwise operations
+- Supported PyTorch tensor resizing
+- Added the algorithm selection rule for grouped 3D convolutions
+- Improved the behavior of the `moreh-smi --reset` command to allow users to recover database errors
+- Correctly closed pipe file descriptors in WorkerAgent
+- Fixed some errors
+
 ## v22.8.3
 - Hotfix for heartbeat thread issues
 
