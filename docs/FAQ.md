@@ -1,7 +1,7 @@
 ## 자주 묻는 질문
 
 ### CUDA 설정관련
-MAF에서는 CUDA 별도 설정이 필요없습니다
+HAC 의 VM 상에서는 CUDA 설치되어 있지 않기 때문에 따로 경로가 존재하지 않습니다. HAC은 CUDA Driver 가 아닌 AI Accelerator 가 자동으로 할당되어 학습이 진행되는 방식입니다. 따라서 CUDA 개발도구를 직접 설치하지 않고 Pytorch 코드를 수행시키셔도 자동으로 GPU가 할당되어 진행되게 됩니다. 
 
 ### Docker를 활용한 MAF GPU 연산
 Docker환경안에서도 MAF GPU연산을 사용하실수 있습니다. Docker용 MAF Image는 다음과 같은 명령어로 실행하실수 있습니다.
