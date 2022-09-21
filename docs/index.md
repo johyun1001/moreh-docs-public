@@ -36,7 +36,7 @@ Hyperscale AI Computing 서비스는 인공지능 학습/추론을 위한 가상
 |프로그래밍 방식|물리 GPU 2개 이상을 사용할 경우 Pytorch/Tensorflow 상에서 별도의 병렬 처리 필요|병렬 처리 불필요<br>(단일 GPU처럼 사용)|
 |Docker 사용 방법|NVIDIA의 base image 기반으로 컨테이터 작성/실행|Hyperscale AI Computing 서비스용 base image기반으로 컨테이너 작성/실행|
 
-# 시스템 및 소프트웨어 구성
+### 시스템 및 소프트웨어 구성
 
 Hyperscale AI Computing 서비스는 물리 GPU를 제공하는 대신 “KT AI Accelerator”라는 가상의 AI 가속기를 제공합니다. 이 가속기는 PyTorch에서 `cuda:0` 디바이스로 인식되며, 기존에 물리 GPU를 사용하던 방식 그대로 PyTorch 프로그램을 작성, 실행할 수 있습니다. VM에서 `moreh-smi` 명령을 실행하여 현재 시스템의 AI 가속기 정보를 확인할 수 있습니다.
 
