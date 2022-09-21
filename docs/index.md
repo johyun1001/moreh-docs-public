@@ -28,7 +28,7 @@ Hyperscale AI Computing 서비스는 인공지능 학습/추론을 위한 가상
 
 |항목|GPU 서버|Hyperscale AI Computing|
 |------|---|---|
-|제공되는 것|물리 GPU 1~8개|가상 GPU 1개<br>(가상 GPU사양에 따라 물리 GPU 수~수백개에 해당하는 성능을 얻을 수 있음|
+|제공되는 것|물리 GPU 1~8개|가상 GPU 1개<br>(가상 GPU사양에 따라 물리 GPU 수~수백개에 해당하는 성능을 얻을 수 있음)|
 |GPU를 사용하기 위해 필요한 소프트웨어|CUDA + Pytorch|KT Cloud에서 별도 제공하는 Pytorch<br>(VM에 미리 설치되어 있음)|
 |Pytorch 프로그램 지원|O|X|
 |CUDA를 직접 사용하는 third-party 라이브러리 및 프로그램 지원|O|X|
