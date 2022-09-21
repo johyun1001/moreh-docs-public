@@ -2,12 +2,14 @@
 
 ### 서비스 기본 개념
 
+---
+
 #### **Q. VM에서 lspci 혹은 nvidia-smi를 실행했는데 GPU가 인식이 되지 않습니다.**
 
 **A.** Hyperscale AI Computing 서비스는 물리적인 GPU 자원을 바로 제공하지 않으며 따라서 GPU가 인식되지 않는 것이 정상입니다. 대신 VM에는 PyTorch에서 사용 가능한 논리적인 AI 가속기가 할당되어 있습니다. AI 가속기 정보는 터미널에서 moreh-smi 명령을 실행하여 확인할 수 있습니다. "KT AI Accelerator" 디바이스가 하나 표시되면 정상적으로 AI 가속기가 할당되어 있는 것입니다.
 
 ```shell
-(pytorch) ubuntu@vm:~$ **moreh-smi**
+(pytorch) ubuntu@vm:~$ moreh-smi
 +--------------------------------------------------------------------------------------------------------------+
 |  Moreh-SMI 0.8.0                                               Client Version: 0.8.0  Server Version: 0.8.0  |
 +--------------------------------------------------------------------------------------------------------------+
@@ -24,7 +26,7 @@ Processes:
 ```
 
 ```shell
-(pytorch) ubuntu@vm:~$ **moreh-smi**
+(pytorch) ubuntu@vm:~$ moreh-smi
 +--------------------------------------------------------------------------------------------------------------+
 |  Moreh-SMI 0.8.0                                               Client Version: 0.8.0  Server Version: 0.8.0  |
 +--------------------------------------------------------------------------------------------------------------+
@@ -41,6 +43,8 @@ Processes:
 ```
 
 AI 가속기는 PyTorch에서 `cuda:0` 디바이스로 인식되며, 기존 CUDA 디바이스와 호환되는 API를 제공합니다. 따라서 물리적인 GPU가 없더라도 기존에 NVIDIA GPU용으로 작성된 PyTorch 프로그램을 그대로 실행할 수 있습니다.
+
+---
 
 #### **Q. Hyperscale AI Computing은 어떤 방식으로 GPU 자원을 사용하게 되나요?**
 
@@ -60,6 +64,8 @@ AI 가속기는 PyTorch에서 `cuda:0` 디바이스로 인식되며, 기존 CUDA
 
 AI 가속기의 사양이 높아지면 PyTorch 프로그램을 실행하기 위해 수~수십 개의 GPU를 동시에 사용할 수도 있습니다. 하지만 사용자는 이를 위해 PyTorch 프로그램을 DataParallel, DistributedDataParallel 등을 사용해 병렬화할 필요가 전혀 없습니다. AI 가속기에서는 단일 GPU를 위한 PyTorch 프로그램을 실행하면 됩니다. Hyperscale AI Computing 컴파일러가 자동으로 연산 작업을 병렬화하여 여러 GPU 자원에서 분산 처리합니다.
 
+---
+
 #### **Q. Hyperscale AI Computing 서비스는 일반 GPU 서버와 어떤 차이점이 있나요?**
 
 **A.** Hyperscale AI Computing 서비스는 물리 GPU를 제공하는 대신 “KT AI Accelerator”라는 가상의 AI 가속기를 제공합니다. 기존 GPU 서버에서는 CUDA를 설치하고 CUDA 기반의 PyTorch를 설치하여 GPU를 사용하였습니다. 반면 Hyperscale AI Computing 서비스에서는 KT Cloud가 별도로 제공하는 PyTorch 버전을 사용해야 합니다. 여기에는 GPU 가상화 및 자동 병렬화를 위한 기능이 함께 포함되어 있습니다.
@@ -68,6 +74,8 @@ AI 가속기의 사양이 높아지면 PyTorch 프로그램을 실행하기 위�
 
 기존 GPU 서버와 Hyperscale AI Computing 서비스 간의 차이점을 정리하자면 다음과 같습니다.
 
+---
+
 #### **Q. Hyperscale AI Computing의 AI 가속기 모델은 어떤 기준으로 선택해야 하나요?**
 
 **A.** 공식 지원 모델을 사용 중인 경우 해당 모델의 매뉴얼에 AI 가속기 모델 별 예상 학습 시간이 안내되어 있습니다. 이를 참고하여 AI 가속기 모델을 선택하십시오.
@@ -75,6 +83,8 @@ AI 가속기의 사양이 높아지면 PyTorch 프로그램을 실행하기 위�
 AI 가속기의 연산 성능과 메모리 용량은 같은 비율로 증가합니다. 즉 small.64gb 모델보다 medium.128gb 모델이 2배, 그리고 medium.128gb 모델보다 large.256gb 모델이 2배 높은 연산 성능과 메모리 용량을 가집니다. 물론 실제 프로그램 실행 시에 연산 속도가 정확히 2배씩 향상되지는 않으므로 이 점을 감안하시기 바랍니다. 프로그램의 연산량이 많지 않은 경우 AI 가속기 사양을 높이더라도 연산 속도가 개선되지 않거나 오히려 떨어질 수 있습니다.
 
 Hyperscale AI Computing VM을 생성한 후에도 언제든지 필요하다면 AI 가속기 모델을 다른 것으로 변경할 수 있습니다. 따라서 정확히 어느 정도 사양이 필요한지 모르신다면 일단 서비스를 이용하시면서 조정을 해 나가시기를 권장드립니다.
+
+---
 
 #### **Q. 기존에 DataParallel 혹은 DistributedDataParallel로 병렬 처리하여 사용하던 코드가 있습니다. 이를 Hyperscale AI Computing 서비스에서 실행하려면 어떻게 해야 하나요?**
 
@@ -157,6 +167,8 @@ NVIDIA GPU 사용 시 NVIDIA의 base image를 바탕으로 다른 이미지를 �
 
 ### AI 가속기 관련 문제 해결
 
+---
+
 #### **Q. KT Cloud에서 Hyperscale AI Computing 서비스용으로 별도 제공하는 PyTorch는 어떻게 설치해야 하나요?**
 
 **A.** VM을 처음 만들면 Hyperscale AI Computing 서비스용 PyTorch가 미리 설치되어 있습니다. 터미널에서 `conda list torch`를 실행하였을 때 PyTorch 버전이 `1.7.1+cu110.moreh00.0.0`와 같은 형식으로 표시될 것입니다.
@@ -173,6 +185,8 @@ torchvision               0.8.2                    pypi_0    pypi
 
 PyTorch를 다른 버전으로 재설치할 경우 AI 가속기를 정상적으로 사용할 수 없으므로 유의하시기 바랍니다. 특히 `requirements.txt` 파일에 적힌 패키지를 일괄 설치하는 과정에서 이런 일이 발생할 수 있습니다. 터미널에서 `update-moreh --force`를 실행하면 Hyperscale AI Computing 서비스용 PyTorch를 다시 복구할 수 있습니다.
 
+---
+
 #### **Q. VM 로그인 시 기본적으로 “pytorch”라는 Anaconda 가상 환경이 활성화됩니다. 다른 가상 환경을 만들 수는 없습니까?**
 
 A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를 위한 각종 소프트웨어 설정이 완료되어 있으므로 가급적 해당 환경에서 시스템을 사용해 주시기를 권장 드립니다.
@@ -186,6 +200,8 @@ A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를
 ```
 
 여러 개의 가상 환경에서 동시에 AI 가속기를 사용하시려는 경우 반드시 모든 가상 환경에서 동일 버전의 PyTorch가 설치되어 있어야 합니다. 각 가상 환경에서 차례로 update-moreh 명령을 실행하여 최신 버전의 소프트웨어를 설치할 수 있습니다.
+
+---
 
 #### **Q. PyTorch 프로그램을 실행하였는데 "Two or more processes cannot use KT AI Accelerator at the same time." 메시지가 출력되고 프로그램이 멈춰 있습니다.**
 
@@ -201,6 +217,8 @@ A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를
 ```
 
 만약 AI 가속기를 사용하는 다른 프로그램이 없는데도 위와 같은 메시지가 표시된다면 다음 질문을 참고하십시오.
+
+---
 
 #### **Q. VM에서 실행 중인 다른 PyTorch 프로그램이 없음에도 불구하고 계속 "Two or more processes cannot use KT AI Accelerator at the same time." 메시지가 출력됩니다.**
 
@@ -233,6 +251,8 @@ Device release success.
 
 이 두 가지 방법으로도 문제가 해결되지 않으면 기술 지원을 받으시기 바랍니다.
 
+---
+
 #### **Q. PyTorch 프로그램을 실행하였는데 "Not enough resources are currently available for KT AI Accelerator." 메시지가 출력되고 프로그램이 멈춰 있습니다.**
 
 **A.** Hyperscale AI Computing 시스템에 동시에 너무 많은 자원 할당 요청이 들어 올 경우 일시적으로 GPU 자원의 신규 할당이 불가능할 수 있습니다. 이 경우 프로그램이 메시지를 출력하고 GPU 자원이 할당될 때까지 대기할 수 있습니다. 이 경우 가만히 있으면 GPU 자원을 할당 받은 이후 자동으로 실행이 재개됩니다.
@@ -243,6 +263,8 @@ Device release success.
 [info] Requesting resources for KT AI Accelerator from the server...
 [warning] Not enough resources are currently available for KT AI Accelerator. All resources in the system are being used by other users. The program will resume automatically when resources become available...
 ```
+
+---
 
 #### **Q. PyTorch 프로그램을 실행하였는데 "The current version of Moreh AI Framework is outdated and no longer supported in the system" 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
@@ -264,6 +286,8 @@ installed : /usr/bin/update-moreh
 installed : /usr/lib/libcommunication.so
 installed : /usr/lib/libmodnnruntime.so
 ```
+
+---
 
 #### **Q. PyTorch 프로그램을 실행하였는데 CUDA error가 출력되면서 프로그램이 강제 종료됩니다.**
 
@@ -303,6 +327,8 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 애플리케이션에 NVIDIA GPU 의존적인 기능이 포함되어 있는 경우 Hyperscale AI Computing 서비스용 PyTorch가 정상 설치되었더라도 CUDA error가 발생할 수 있습니다. 이 경우 별도로 기술 지원을 받으시기 바랍니다.
 
+---
+
 #### **Q. PyTorch 프로그램을 실행하거나 update-moreh 명령을 실행할 때 "ImportError: numpy.core.multiarray failed to import" 에러가 발생합니다.**
 
 **A.** 시스템에 너무 낮은 버전(1.16 미만)의 NumPy 라이브러리가 설치되어 문제가 발생할 수 있습니다. 다음과 같이 실행하여 현재 설치된 NumPy 버전을 확인하십시오.
@@ -321,16 +347,20 @@ numpy                     1.15.2                   pypi_0    pypi
 (pytorch) ubuntu@vm:~$ **conda install numpy -c conda-forge**
 ```
 
+---
+
 #### **Q. PyTorch 프로그램을 실행하거나 moreh-smi 혹은 moreh-switch-model 명령을 실행하였는데 "SDA token is not given." 에러가 발생합니다.**
 
 **A.** Hyperscale AI Computing 서비스는 AI 가속기를 식별하기 위해 /etc/moreh/token 파일의 내용을 읽어 옵니다. 다음과 같이 실행하여 해당 파일이 접근 가능한지 확인하십시오.
 
 ```
-(pytorch) ubuntu@vm:~$ **cat /etc/moreh/token**
+(pytorch) ubuntu@vm:~$ cat /etc/moreh/token
 ZXhhbXBsZSB0b2tlbiBzdHI=
 ```
 
 만약 위와 같이 실행하였을 때 문제가 발생한다면 기술 지원을 받으시기 바랍니다.
+
+---
 
 #### **Q. moreh-switch-model 명령으로 AI 가속기 모델을 바꾸려고 하니 "The model cannot be switched while the KT AI Accelerator is in use." 에러가 발생합니다.**
 
@@ -338,13 +368,19 @@ ZXhhbXBsZSB0b2tlbiBzdHI=
 
 - VM에서 실행 중인 다른 PyTorch 프로그램이 없음에도 불구하고 계속 "Two or more processes cannot use KT AI Accelerator at the same time." 메시지가 출력됩니다.
 
+---
+
 #### **Q. PyTorch 프로그램을 실행하였는데 "KT AI Accelerator memory not enough." 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
 **A.** AI 가속기의 메모리 용량이 부족하여 해당 프로그램의 실행이 실패하였음을 의미합니다. 공식 지원 모델을 사용 중인 경우 해당 모델의 매뉴얼에 안내된 권장 batch size를 사용하였는지 확인해 보십시오. 혹은 moreh-switch-model 명령을 사용해 AI 가속기 모델을 더 고사양으로 변경한 다음 프로그램을 실행하여 보십시오.
 
+---
+
 #### **Q. PyTorch 프로그램을 실행하였는데 "Failed to initialize the worker daemon for KT AI Accelerator." 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
 **A.** VM이 할당받은 GPU 자원을 초기화하는 과정에서 문제가 생겼음을 의미합니다. 프로그램을 다시 한 번 실행해 보시고, 같은 증상이 여러 번 반복되면 기술 지원을 받으시기 바랍니다. 기술 지원 시 프로그램을 실행한 시간이 언제인지를 전달해 주시면 더 빨리 도움을 드릴 수 있습니다.
+
+---
 
 #### **Q. PyTorch 프로그램을 실행하였는데 "Connecting to resources on the server" 메시지 직후에 "The connection to the server has been lost." 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
@@ -360,11 +396,15 @@ ZXhhbXBsZSB0b2tlbiBzdHI=
 
 서버 접속 장애로 인해 프로그램이 강제 종료된 경우 해당 실행 건에 대해서는 요금이 부과되지 않습니다.
 
+---
+
 #### **Q. PyTorch 프로그램을 실행하였는데 GPU 연산이 한참 실행되던 중에 갑자기 "The connection to the server has been lost." 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
 **A.** VM이 할당받은 GPU 자원과 통신하는 과정에서 문제가 생겼음을 의미합니다. 프로그램을 다시 한 번 실행해 보시고, 같은 증상이 여러 번 반복되면 기술 지원을 받으시기 바랍니다. 기술 지원 시 프로그램을 실행한 시간이 언제인지를 전달해 주시면 더 빨리 도움을 드릴 수 있습니다.
 
 서버 통신 장애로 인해 프로그램이 강제 종료된 경우 해당 실행 건에 대해서는 요금이 부과되지 않습니다.
+
+---
 
 #### **Q. PyTorch 프로그램을 실행하였는데 "An internal error occurred in the KT AI Accelerator" 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
