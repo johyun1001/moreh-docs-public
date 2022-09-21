@@ -32,7 +32,7 @@ update-moreh --force --target 22.8.0
 
 5. 정상 설치 확인
 
-```python
+```bash
 (pytorch) ubuntu@ktlab2:~$ python
 Python 3.8.13 (default, Mar 28 2022, 11:38:47)
 [GCC 7.5.0] :: Anaconda, Inc. on linux

@@ -4,7 +4,7 @@
 
 Hyperscale AI Computing 서비스는 Docker 컨테이너 안에서 AI 가속기를 사용하는 PyTorch 프로그램을 실행할 수 있도록 전용 Docker 이미지를 제공하고 있습니다. VM에서 다음과 같이 실행하여 AI 가속기가 활성화된 컨테이너를 실행할 수 있습니다.
 
-```
+```bash
 (pytorch) ubuntu@vm:~$ sudo moreh-docker-run
 ...
 Login Succeeded
@@ -79,7 +79,7 @@ loss: 2.270298  [12800/60000]
 
 Hyperscale AI Computing 서비스는 전용 Docker 이미지를 위한 사설 registry를 제공하고 있습니다. 다음과 같이 실행하여 Docker Image를 내려받거나 바로 실행하실수가 있습니다.
 
-```
+```bash
 (pytorch) ubuntu@moreh-server-new-9:~$ sudo moreh-docker-run
 WARNING! Using --password via the CLI is insecure. Use --password-stdin.
 WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
@@ -110,7 +110,7 @@ Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:22.9.1
 - **-v /etc/moreh:/etc/moreh**
     - VM의 /etc/moreh 디렉터리에는 AI 가속기 사용 시 resource farm에 접속하기 위한 정보가 저장되어 있습니다. -v /etc/moreh:/etc/moreh 옵션은 컨테이너 안에서도 /etc/moreh 디렉터리에 resource farm 접속 정보가 저장되도록 합니다. 컨테이너가 실행된 후 moreh-smi 명령이 에러 없이 실행된다면 옵션이 정상적으로 적용된 것입니다.
 
-```
+```bash
 (pytorch) ubuntu@vm:~$ sudo docker run --rm -it --net=host --privileged -v /etc/moreh:/etc/moreh sys.deploy.kt-epc.moreh.io:5001/moreh:latest /bin/bash
 (moreh) root@vm:~#
 ```
