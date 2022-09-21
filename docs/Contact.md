@@ -2,7 +2,7 @@
 
 # Contact
 
-![Image title](moreh_icon.png)
+![Image title](image/moreh_icon.png)
 
 
 ## Homepage
