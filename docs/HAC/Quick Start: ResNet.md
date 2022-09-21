@@ -43,9 +43,9 @@ VM에 접속하면 홈 디렉터리 밑에 install.sh 스크립트가 위치하�
 설치가 정상적으로 이루어졌다면 홈 디렉터리 밑의 downloads 디렉터리는 지워도 무방합니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **ls**
+(pytorch) ubuntu@vm:~$ ls
 install.sh  sample
-(pytorch) ubuntu@vm:~$ **./install.sh**
+(pytorch) ubuntu@vm:~$ ./install.sh
 
 - Installing resnet reference code...
 (중략)
@@ -55,11 +55,11 @@ Install complete!
 - Dataset imagenet_100cls    : [ OK    ] (Saved at /home/ubuntu/dataset/imagenet_100cls)
 - Link dataset               : [ OK    ] (Linked dataset at /home/ubuntu/resnet/data)
 
-(pytorch) ubuntu@vm:~$ **ls**
+(pytorch) ubuntu@vm:~$ ls
 dataset  downloads  install.sh  sample  resnet
-(pytorch) ubuntu@vm:~$ **ls dataset**
+(pytorch) ubuntu@vm:~$ ls dataset
 imagenet_100cls
-(pytorch) ubuntu@vm:~$ **ls resnet**
+(pytorch) ubuntu@vm:~$ ls resnet
 data  dataset  inference.py  LICENSE.md  model  requirements.txt  train.py  utils.py
 ```
 
@@ -68,23 +68,23 @@ data  dataset  inference.py  LICENSE.md  model  requirements.txt  train.py  util
 VM에는 기본적으로 Python 3.8, PyTorch 1.7.1 및 Hyperscale AI Computing 지원을 위한 플러그인이 설치되어 있습니다. 다음과 같이 실행하여 PyTorch 버전 및 Hyperscale AI Computing 플러그인 버전 정보를 확인할 수 있습니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **python**
+(pytorch) ubuntu@vm:~$ python
 Python 3.8.12 (default, Oct 12 2021, 13:49:34)
 [GCC 7.5.0] :: Anaconda, Inc. on linux
 Type "help", "copyright", "credits" or "license" for more information.
->>> **import torch**
->>> **torch.__version__**
+>>> import torch
+>>> torch.__version__
 '1.7.1'
->>> **torch.version.moreh**
+>>> torch.version.moreh
 '22.7.0'
->>> **quit()**
+>>> quit()
 (pytorch) ubuntu@vm:~$
 ```
 
 또한 터미널에서 moreh-smi 명령을 실행하여 VM에 연결된 AI 가속기 정보를 확인할 수 있습니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **moreh-smi**
+(pytorch) ubuntu@vm:~$ moreh-smi
 +--------------------------------------------------------------------------------------------------------------+
 |  Moreh-SMI 22.7.0                                              Client Version: 22.7.0 Server Version: 22.7.0 |
 +--------------------------------------------------------------------------------------------------------------+
@@ -105,8 +105,8 @@ Processes:
 홈 디렉터리 아래의 resnet 디렉터리로 이동한 다음 train.py 스크립트를 실행하여 ResNet-50 모델 학습을 시작할 수 있습니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **cd ~/resnet**
-(pytorch) ubuntu@vm:~/resnet$ **python train.py --save-model model.pt -b 256** (*변경*)
+(pytorch) ubuntu@vm:~$ cd ~/resnet
+(pytorch) ubuntu@vm:~/resnet$ python train.py --save-model model.pt -b 256
 | INFO     | __main__:parse_args:140 - PARAMETER | mode : train
 | INFO     | __main__:parse_args:140 - PARAMETER | load_checkpoint :
 | INFO     | __main__:parse_args:140 - PARAMETER | checkpoint_path : ./checkpoint
@@ -124,7 +124,7 @@ Processes:
 
 --save-model 옵션은 학습이 완료된 모델을 어느 파일에 저장할지를 지정합니다. 위 예시의 경우 학습이 완료된 모델을 model.pt 파일에 저장합니다.
 
-b 옵션은 mini-batch size, 즉 학습 이미지 몇 장을 한 번에 AI 가속기에서 학습시킬 것인지를 지정합니다. AI 가속기 사양이 높아질수록 거기에 맞춰 mini-batch size를 키워 주어야 최적의 성능을 얻을 수 있습니다. 또한 medium.128gb 이상의 모델을 사용할 경우 --num-workers 8 옵션을 추가하여 학습 데이터를 더 많은 CPU 코어에서 불러오도록 해야 충분한 성능을 얻을 수 있습니다. Hyperscale AI Computing의 AI 가속기 모델별로 권장하는 실행 옵션은 다음과 같습니다.(*변경*)
+b 옵션은 mini-batch size, 즉 학습 이미지 몇 장을 한 번에 AI 가속기에서 학습시킬 것인지를 지정합니다. AI 가속기 사양이 높아질수록 거기에 맞춰 mini-batch size를 키워 주어야 최적의 성능을 얻을 수 있습니다. 또한 medium.128gb 이상의 모델을 사용할 경우 --num-workers 8 옵션을 추가하여 학습 데이터를 더 많은 CPU 코어에서 불러오도록 해야 충분한 성능을 얻을 수 있습니다. Hyperscale AI Computing의 AI 가속기 모델별로 권장하는 실행 옵션은 다음과 같습니다.
 
 - small.64gb: -b 256
 - medium.128gb: -b 512 --num-workers 8
@@ -135,7 +135,7 @@ b 옵션은 mini-batch size, 즉 학습 이미지 몇 장을 한 번에 AI 가�
 train.py 스크립트는 기본적으로 샘플 데이터를 42회 반복 학습(42 epoch)시킵니다. 데이터 학습 횟수를 수정하기 위해서는 스크립트 실행 시 -e 옵션을 주면 됩니다.
 
 ```
-(pytorch) ubuntu@vm:~/resnet$ **python train.py --save-model model.pt -b 256** (*변경*) **-e 100**
+(pytorch) ubuntu@vm:~/resnet$ python train.py --save-model model.pt -b 256 -e 100
 ...
 [info] Requesting resources for KT AI Accelerator from the server...
 [info] Initializing the worker daemon for KT AI Accelerator...
@@ -215,9 +215,8 @@ Hyperscale AI Computing 사용 중에 필요하다면 언제든지 AI 가속기�
 AI 가속기 모델 변경을 위해서는 터미널에서 moreh-switch-model 명령을 실행한 다음 변경할 모델 순번(1~8)을 입력하고, q를 입력하여 프로그램을 종료합니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **moreh-switch-model
-~~~~**(*변경*)
-**~~~~**Current KT AI Accelerator: Medium.128GB
+(pytorch) ubuntu@vm:~$ moreh-switch-model
+Current KT AI Accelerator: Medium.128GB
 
 1. Small.64GB
 2. Medium.128GB*
@@ -269,7 +268,7 @@ ImageNet 데이터베이스와 호환되는 포맷의 데이터가 있다면 이
 그 다음 ResNet-50 모델 학습을 위해 train.py 스크립트를 실행할 때 --dataset 옵션으로 your_training_data 디렉터리의 위치를 지정하십시오.
 
 ```
-(pytorch) ubuntu@vm:~/resnet$ **python train.py --save-model model.pt -b 256** (*변경*)**--dataset ~/your_training_data**
+(pytorch) ubuntu@vm:~/resnet$ python train.py --save-model model.pt -b 256 --dataset ~/your_training_data
 ...
 | INFO     | __main__:parse_args:140 - PARAMETER | dataset : ~/your_training_data
 ...
@@ -285,7 +284,7 @@ ImageNet 데이터베이스와 호환되는 포맷의 데이터가 있다면 이
 또한 학습된 ResNet-50 모델로 입력 데이터에 대한 추론을 할 때, 해당 모델이 몇 가지 사물 유형을 분류하도록 학습되었는지를 --num-classes 옵션으로 지정해야 합니다.
 
 ```
-(pytorch) ubuntu@vm:~/resnet$ **python inference.py --model model.pt --dataset ~/your_inference_data --output output.csv -b 256** (*변경*)**--num-classes 300**
+(pytorch) ubuntu@vm:~/resnet$ python inference.py --model model.pt --dataset ~/your_inference_data --output output.csv -b 256 --num-classes 300
 ...
 | INFO     | __main__:parse_args:48 - PARAMETER | num_classes : 300
 | INFO     | __main__:parse_args:49 -
@@ -306,7 +305,7 @@ ImageNet 데이터베이스와 호환되는 포맷의 데이터가 있다면 이
 - AI 가속기에서는 동시에 두 개 이상의 프로그램을 실행할 수 없습니다. 예를 들어 학습 작업이 실행 중인 동안 다른 학습/추론 작업을 실행할 수 없습니다. 이 경우 나중에 실행한 프로그램은 아래와 같은 메시지를 출력하고 앞에 실행한 프로그램이 끝날 때까지 대기하게 됩니다. 만약 AI 가속기를 사용하는 다른 프로그램이 없는데도 아래와 같은 메시지가 출력될 경우, 사용자 매뉴얼의 '자주 묻는 질문'을 참고하십시오.
 
 ```
-(pytorch) ubuntu@vm:~/resnet$ **python train.py**
+(pytorch) ubuntu@vm:~/resnet$ python train.py
 ...
 [info] Requesting resources for KT AI Accelerator from the server...
 [warning] KT AI Accelerator is already in use by another process:
@@ -317,7 +316,7 @@ ImageNet 데이터베이스와 호환되는 포맷의 데이터가 있다면 이
 - 모델 학습/추론 과정에서 데이터를 빠르게 불러 오기 위해 별도의 DataLoader 프로세스가 실행됩니다. train.py 혹은 inference.py 스크립트가 비정상 종료했을 때(예를 들어 Ctrl+C로 강제 종료했을 때) 주 프로세스는 없어지더라도 DataLoader 프로세스는 없어지지 않고 남아 있는 경우가 있습니다. 이 경우 AI 가속기에서 새로운 프로그램을 실행할 수 없을 뿐더러 VM의 CPU 코어와 메인 메모리를 지속적으로 점유하기 때문에 다른 프로그램 실행 시 문제가 될 수 있습니다. 현재 VM에 실행 중인 Python 프로세스가 존재하는지 ps aux | grep python 명령으로 확인할 수 있습니다. 또한 실행 중인 모든 Python 프로세스를 pkill python 명령으로 제거할 수 있습니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **ps aux | grep python**
+(pytorch) ubuntu@vm:~$ ps aux | grep python
 root      1700  0.0  0.0 169104 17136 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
 root      1900  0.0  0.0 185956 20112 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
 ubuntu    9900 84.1  0.1 3688828 508348 pts/1  Sl   08:50   0:18 python train.py
@@ -325,8 +324,8 @@ ubuntu    9901 79.5  0.1 3671492 491104 pts/1  Sl   08:50   0:17 python train.py
 ubuntu    9902 65.4  0.1 3670744 490580 pts/1  Sl   08:50   0:14 python train.py
 ubuntu    9903 67.5  0.1 3671280 490440 pts/1  Sl   08:50   0:14 python train.py
 ubuntu   10000  0.0  0.0  14864  1116 pts/2    S+   08:51   0:00 grep --color=auto python
-(pytorch) ubuntu@vm:~$ **pkill python**
-(pytorch) ubuntu@vm:~$ **ps aux | grep python**
+(pytorch) ubuntu@vm:~$ pkill python
+(pytorch) ubuntu@vm:~$ ps aux | grep python
 root      1700  0.0  0.0 169104 17136 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
 root      1900  0.0  0.0 185956 20112 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
 ubuntu   10001  0.0  0.0  14864  1116 pts/2    S+   08:51   0:00 grep --color=auto python
@@ -335,12 +334,12 @@ ubuntu   10001  0.0  0.0  14864  1116 pts/2    S+   08:51   0:00 grep --color=au
 - Hyperscale AI Computing 서비스는 지속적으로 소프트웨어 업데이트가 이루어지고 있습니다. 터미널에서 update-moreh 명령을 실행하여 소프트웨어가 최신 버전이 아닌 경우 자동으로 업데이트할 수 있습니다. 구 버전의 소프트웨어를 사용할 경우 train.py 혹은 inference.py 프로그램 실행 시에 경고 메시지가 출력되거나 아예 AI 가속기 할당이 불가능할 수 있습니다.
 
 ```
-(pytorch) ubuntu@vm:~$ **update-moreh**
+(pytorch) ubuntu@vm:~$ update-moreh
 Currently installed: 0.8.0
 Possible upgrading version: 0.8.1
 
 Do you want to upgrade? (y/n, default:n)
-**y**
+y
 ...
 Finished processing dependencies for moreh-driver==0.8.1
 
