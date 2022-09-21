@@ -1,5 +1,11 @@
 # Update History
 
+## v22.9.1
+- Added a compiler pass to flatten ≥6D input/output tensors into simpler ones and to avoid unsupported dimension errors in moDNN
+- `moreh-smi --reset` now works correctly when the worker process is already terminated but the GPU resources are not released
+- Enabled `torch.nn.BCEWithLogitsLoss` to accept pos_weight of a different type than input
+- Resolved a potential performance issue of Softmax
+
 ## v22.9.0
 - Supported 6- and 7-dimensional input/output tensors in elemwise operations
 - Supported PyTorch tensor resizing
