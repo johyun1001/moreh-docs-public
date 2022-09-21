@@ -77,31 +77,28 @@ loss: 2.270298  [12800/60000]
 
 ## 이미지 내려받기
 
-Hyperscale AI Computing 서비스는 전용 Docker 이미지를 위한 사설 registry를 제공하고 있습니다. 다음과 같이 실행하여 사설 registry에 로그인하고 Docker 이미지 최신 버전을 다운로드할 수 있습니다.
+Hyperscale AI Computing 서비스는 전용 Docker 이미지를 위한 사설 registry를 제공하고 있습니다. 다음과 같이 실행하여 Docker Image를 내려받거나 바로 실행하실수가 있습니다.
 
 ```
-(pytorch) ubuntu@vm:~$ sudo docker login -uguest -pguest sys.deploy.kt-epc.moreh.io:5001
+(pytorch) ubuntu@moreh-server-new-9:~$ sudo moreh-docker-run
 WARNING! Using --password via the CLI is insecure. Use --password-stdin.
 WARNING! Your password will be stored unencrypted in /home/ubuntu/.docker/config.json.
 Configure a credential helper to remove this warning. See
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 
 Login Succeeded
-(pytorch) ubuntu@vm:~$ sudo docker image pull sys.deploy.kt-epc.moreh.io:5001/moreh:latest
-latest: Pulling from moreh
-284055322776: Pull complete
-3cc7ef3422d9: Pull complete
-c8ec61cd0a03: Pull complete
-17ab1f47ffda: Pull complete
-720062349d38: Pull complete
-Digest: sha256:003b54de6395f468799db818e1c884a3dfd92f7ec296a40c082b123cc9298ac2
-Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:latest
-sys.deploy.kt-epc.moreh.io:5001/moreh:latest
-(pytorch) ubuntu@vm:~$ sudo docker images
-REPOSITORY                              TAG       IMAGE ID       CREATED        SIZE
-sys.deploy.kt-epc.moreh.io:5001/moreh   latest    8fed6aa6b12c   30 hours ago   3.42GB
-(pytorch) ubuntu@vm:~$ sudo docker logout sys.deploy.kt-epc.moreh.io:5001
-Removing login credentials for sys.deploy.kt-epc.moreh.io:5001
+Unable to find image 'sys.deploy.kt-epc.moreh.io:5001/moreh:22.9.1' locally
+22.9.1: Pulling from moreh
+726b8a513d66: Pull complete
+4f4fb700ef54: Pull complete
+7da60f7be8c2: Pull complete
+12ad2da3b577: Pull complete
+98caf5a4948e: Pull complete
+090d165a45e0: Pull complete
+674df12613d3: Pull complete
+Digest: sha256:c4d8dc1517296b0c18ae03b52e1e7ce20d09d40ebc0c423c92830fb73489621d
+Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:22.9.1
+(moreh) root@moreh-server-new-9:~#
 ```
 
 ## 컨테이너 시작
