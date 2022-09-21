@@ -1,4 +1,6 @@
-# vGPU VM에서의 Jupyter Notebook 설정하기 (VM 생성전)
+# Jupyter Notebook Setting
+
+## vGPU VM에서의 Jupyter Notebook 설정하기 (VM 생성전)
 
 vGPU가 적용된 새로운 VM에는 기본으로 Jupyter Notebook 을 설치하여 제공할 예정입니다. 유저에게 Jupyter Notebook을 제공하기 위해서는 VM 생성 및 유저 전달 전에 몇가지 Jupyter Notebook 설정을 변경해주어야 하는 점이 있습니다. Jupyter Notebook 을 정상적으로 실행하기 위한 가이드를 드리고자 하니, 참고하시어 VM 이미지 생성 및 세팅에 참고해주시면 감사하겠습니다.
 
