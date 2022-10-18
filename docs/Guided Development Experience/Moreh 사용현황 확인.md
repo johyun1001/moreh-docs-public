@@ -1,4 +1,4 @@
-# Quick Start: ResNet
+# Moreh 솔루션 사용현황 확인하기
 
 ResNet은 대표적인 image classification용 CNN 모델 중 하나입니다. 224×224 크기의 이미지를 입력 받아 풍선, 딸기, 고양이 등 사전에 정의된 여러 가지 사물 유형 중 하나로 분류합니다.
 
