@@ -1,6 +1,6 @@
-# Get Reference Model Code
+# Reference Model 다운받기 
 
-HAC 환경에서는 간단한 명령어 한줄로 다양한 Reference Model(이하 RM) Code를 얻을 수 있습니다.
+간단한 명령어 한줄로 다양한 Reference Model(이하 RM) Code를 얻을 수 있습니다.
 
 실행 방법은 다음과 같습니다.
 
