@@ -1,8 +1,8 @@
 # Get Started with Moreh
 
-## Conda 환경 세팅 및 Moreh 설치
+## 1. Conda 환경 세팅 및 Moreh 설치
 
-HAC VM에서 conda 환경에 문제가 생길경우, conda 가상환경을 다시 세팅하는 방법입니다. `pytorch` 라는 conda 가상환경 명으로 세팅한다고 가정하겠습니다.
+VM에서 conda 환경에 문제가 생길경우, conda 가상환경을 다시 세팅하는 방법입니다. `pytorch` 라는 conda 가상환경 명으로 세팅한다고 가정하겠습니다.
 
 1. 가상환경 삭제 (이미 삭제했다면 Skip 하셔도 됩니다)
 
@@ -13,26 +13,26 @@ conda deactivate
 conda env remove -n pytorch
 ```
 
-1. 가상환경 재생성
+2. 가상환경 재생성
 
 ```bash
 conda create -y -n pytorch python=3.8
 conda activate pytorch
 ```
 
-1. pytorch 패키지 설치
+3. pytorch 패키지 설치
 
 ```bash
 conda install -y torchvision torchaudio numpy protobuf==3.13.0 pytorch==1.7.1 cpuonly -c pytorch
 ```
 
-1. moreh 솔루션 업데이트
+4. moreh 솔루션 업데이트
 
 ```bash
 update-moreh --force --target 22.8.0
 ```
 
-1. 정상 설치 확인
+5. 정상 설치 확인
 
 ```jsx
 (pytorch) ubuntu@ktlab2:~$ python
@@ -48,7 +48,7 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 
 
-## Docker 이미지로 Moreh 실행
+## 2. Docker 이미지로 Moreh 실행
 
 Hyperscale AI Computing 서비스는 Docker 컨테이너 안에서 AI 가속기를 사용하는 PyTorch 프로그램을 실행할 수 있도록 전용 Docker 이미지를 제공하고 있습니다. VM에서 다음과 같이 실행하여 AI 가속기가 활성화된 컨테이너를 실행할 수 있습니다.
 
@@ -126,7 +126,7 @@ loss: 2.270298  [12800/60000]
 
 </aside>
 
-# 이미지 내려받기
+### 이미지 내려받기
 
 Hyperscale AI Computing 서비스는 전용 Docker 이미지를 위한 사설 registry를 제공하고 있습니다. 다음과 같이 실행하여 사설 registry에 로그인하고 Docker 이미지 최신 버전을 다운로드할 수 있습니다.
 
@@ -155,7 +155,7 @@ sys.deploy.kt-epc.moreh.io:5001/moreh   latest    8fed6aa6b12c   30 hours ago   
 Removing login credentials for sys.deploy.kt-epc.moreh.io:5001
 ```
 
-# 컨테이너 시작
+### 컨테이너 시작
 
 다음과 같이 docker run 명령으로 컨테이너를 실행할 수 있습니다. 이 때 다음의 두 가지 옵션을 포함시켜야 합니다.
 
