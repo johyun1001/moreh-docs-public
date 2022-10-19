@@ -1,6 +1,10 @@
 # SDA 변경하기
 
-### **moreh-switch-model**
+다음 SDA 명령어를 사용하여 VM에서 작업하는 사용자에게 제공하는 GPU의 크기 및 개수를 확인할 수 있습니다.
+
+```
+moreh-switch-model
+```
 
 Software-Defined Accelerator(SDA) Model을 변경하는 ****대화형**** 명령어입니다. 현재 지원하는 SDA Model은 다음과 같습니다. 번호로 SDA Model을 선택할수있고, q(또는 Q)로 대화를 종료 할 수 있습니다.
 
