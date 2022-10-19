@@ -126,7 +126,7 @@ loss: 2.270298  [12800/60000]
 
 </aside>
 
-### 이미지 내려받기
+### 2-1. 이미지 내려받기
 
 Hyperscale AI Computing 서비스는 전용 Docker 이미지를 위한 사설 registry를 제공하고 있습니다. 다음과 같이 실행하여 사설 registry에 로그인하고 Docker 이미지 최신 버전을 다운로드할 수 있습니다.
 
@@ -155,7 +155,7 @@ sys.deploy.kt-epc.moreh.io:5001/moreh   latest    8fed6aa6b12c   30 hours ago   
 Removing login credentials for sys.deploy.kt-epc.moreh.io:5001
 ```
 
-### 컨테이너 시작
+### 2-2. 컨테이너 시작
 
 다음과 같이 docker run 명령으로 컨테이너를 실행할 수 있습니다. 이 때 다음의 두 가지 옵션을 포함시켜야 합니다.
 
@@ -168,9 +168,11 @@ Removing login credentials for sys.deploy.kt-epc.moreh.io:5001
 (pytorch) ubuntu@vm:~$ **sudo docker run --rm -it --net=host --privileged -v /etc/moreh:/etc/moreh sys.deploy.kt-epc.moreh.io:5001/moreh:latest /bin/bash**
 (moreh) root@vm:~#
 ```
+### 2-3. Docker Image 실행
 
+```
 ### **moreh-docker-run**
-
+```
 Moreh AI Framework(MAF)가 담긴 Docker Image를 실행합니다.
 
 **Supported Arguments**

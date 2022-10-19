@@ -1,11 +1,11 @@
 # Moreh 솔루션 사용현황 확인하기
 
-
-## 1. GPU 사용현황 확인하기
-아래 명령어를 통해 현재 선택된 Software-Defined Accelerator(SDA) Model, 실행 중인 학습 프로세스 및 GPU Resource를 얼마나 할당받고있는지를 확인 할 수 있습니다.
 ```
 moreh-smi
 ```
+
+위 명령어를 통해 현재 선택된 Software-Defined Accelerator(SDA) Model, 실행 중인 학습 프로세스 및 GPU Resource를 얼마나 할당받고있는지를 확인 할 수 있습니다.
+
 
 ```bash
 (pytorch) ubuntu@moreh-server:~$ moreh-smi

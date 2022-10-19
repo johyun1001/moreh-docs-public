@@ -1,6 +1,7 @@
 # Management Commands
 
-Moreh AI Frameworks support multiple commands like below.
+Moreh AI Framework는 아래와 같은 여러 명령어를 지원합니다.
+
 
 ## moreh-smi
 현재 선택된 Software-Defined Accelerator(SDA) Model, 실행중인 학습 프로세스 및 GPU Resource를 얼마나 할당받고있는지를 확인 할 수 있는 명령어입니다.
