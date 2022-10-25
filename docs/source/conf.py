@@ -28,7 +28,7 @@ language = 'ko'
 #html_theme = 'alabaster'
 
 #html_theme = "sphinx_rtd_theme"
-html_theme = "sphinx_material"
+html_theme = 'sphinx_material'
 html_static_path = ['_static']
 
 html_theme_options = {
@@ -50,8 +50,7 @@ html_theme_options = {
 
 
 import os
-import sys
-sys.path.insert(0, os.path.abspath('../../'))
+
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 # # only import and set the theme if we're building docs locally
 if not on_rtd:
