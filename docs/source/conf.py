@@ -14,7 +14,7 @@ release = '0.5'
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-extensions = [    'sphinx_rtd_theme','myst_parser', 'sphinx.ext.autodoc', 'sphinx.ext.doctest']
+extensions = [  'sphinx_rtd_theme','myst_parser', 'sphinx.ext.autodoc', 'sphinx.ext.doctest']
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -47,3 +47,14 @@ html_theme_options = {
     'includehidden': True,
     'titles_only': False
 }
+
+
+import os
+import sys
+sys.path.insert(0, os.path.abspath('../../'))
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
+# # only import and set the theme if we're building docs locally
+if not on_rtd:
+    import sphinx_rtd_theme
+    html_theme = 'sphinx_rtd_theme'
+    html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
