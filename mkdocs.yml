@@ -1,6 +1,11 @@
-site_name: Moreh Documentation
+site_name: Develop with Moreh Documents
 site_author: Product Team
 site_description: Moreh AI Framework Documentation
 theme:
     name: readthedocs
+    custom_dir: 'custom_theme/'
+    highlightjs: true
+    hljs_languages:
+        - yaml
+        - rust
   # name: flatly
