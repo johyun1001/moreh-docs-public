@@ -1,10 +1,16 @@
 import sphinx_rtd_theme
 
 extensions = [
-    'sphinx_rtd_theme',
+    'sphinx_rtd_theme','myst_parser', 'sphinx.ext.autodoc', 'sphinx.ext.doctest',
+              'sphinx.ext.intersphinx', 'sphinx.ext.todo',
+              'sphinx.ext.ifconfig', 'sphinx.ext.viewcode',
+              'sphinx.ext.inheritance_diagram',
+              'sphinx.ext.autosummary'
 ]
 
-html_theme = "sphinx_rtd_theme"
+
+#html_theme = "sphinx_rtd_theme"
+html_theme = "sphinx_material"
 
 
 html_theme_options = {
