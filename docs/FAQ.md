@@ -7,7 +7,7 @@
 
 **Q. VM에서 lspci 혹은 nvidia-smi를 실행했는데 GPU가 인식이 되지 않습니다.**
 
-**A.** AI 가속기 정보는 터미널에서 moreh-smi 명령을 실행하여 확인할 수 있습니다. "KT AI Accelerator" 디바이스가 하나 표시되면 정상적으로 AI 가속기가 할당되어 있는 것입니다.
+**A.** AI 가속기 정보는 터미널에서 moreh-smi 명령을 실행하여 확인할 수 있습니다. 사용할 디바이스가 하나 표시되면 정상적으로 AI 가속기가 할당되어 있는 것입니다.
 
 ```shell
 (pytorch) ubuntu@vm:~$ moreh-smi
@@ -16,7 +16,7 @@
 +--------------------------------------------------------------------------------------------------------------+
 |  Device  |        Name         |            Token           |     Model    |  Memory Usage  |  Total Memory  |
 +==============================================================================================================+
-|       1  |  KT AI Accelerator  |  ZXhhbXBsZSB0b2tlbiBzdHI=  |  small.16gb  |  -             |  -             |
+|       1  |  (device) AI Accelerator  |  ZXhhbXBsZSB0b2tlbiBzdHI=  |  small.16gb  |  -             |  -             |
 +--------------------------------------------------------------------------------------------------------------+
 
 Processes:
@@ -33,7 +33,7 @@ Processes:
 +--------------------------------------------------------------------------------------------------------------+
 |  Device  |        Name         |            Token           |     Model    |  Memory Usage  |  Total Memory  |
 +==============================================================================================================+
-|       1  |  KT AI Accelerator  |  ZXhhbXBsZSB0b2tlbiBzdHI=  |  small.16gb  |  -             |  -             |
+|       1  |  (device) AI Accelerator  |  ZXhhbXBsZSB0b2tlbiBzdHI=  |  small.16gb  |  -             |  -             |
 +--------------------------------------------------------------------------------------------------------------+
 
 Processes:
@@ -44,37 +44,6 @@ Processes:
 ```
 
 AI 가속기는 PyTorch에서 `cuda:0` 디바이스로 인식되며, 기존 CUDA 디바이스와 호환되는 API를 제공합니다. 따라서 물리적인 GPU가 없더라도 기존에 NVIDIA GPU용으로 작성된 PyTorch 프로그램을 그대로 실행할 수 있습니다.
-
----
-
-**Q. Hyperscale AI Computing은 어떤 방식으로 GPU 자원을 사용하게 되나요?**
-
-**A.** PyTorch와 함께 설치되는 Hyperscale AI Computing 지원 플러그인이 GPU 자원의 할당 및 사용을 위한 모든 작업을 자동으로 수행합니다.
-
-먼저 PyTorch 프로그램이 실행되면 서버에 요청을 보내 resource farm에 위치하는 GPU 자원을 하나 이상 할당받습니다. 화면에 다음과 같은 메시지가 표시되면 GPU 자원에 연결이 완료된 것입니다.
-
-```
-[info] Requesting resources for KT AI Accelerator from the server...
-[info] Initializing the worker daemon for KT AI Accelerator...
-[info] [1/1] Connecting to resources on the server (192.168.00.00:00000)...
-[info] Establishing links to the resources...
-[info] KT AI Accelerator is ready to use.
-```
-
-이후 PyTorch 프로그램이 실행되면서 GPU 연산을 요청하면 이것을 원격에 위치한 GPU에 오프로딩(offloading)하게 됩니다. VM은 resource farm과 전용 네트워크로 연결되어 있으며 그 외의 물리적인 장치를 사용하지 않습니다.
-
-AI 가속기의 사양이 높아지면 PyTorch 프로그램을 실행하기 위해 수~수십 개의 GPU를 동시에 사용할 수도 있습니다. 하지만 사용자는 이를 위해 PyTorch 프로그램을 DataParallel, DistributedDataParallel 등을 사용해 병렬화할 필요가 전혀 없습니다. AI 가속기에서는 단일 GPU를 위한 PyTorch 프로그램을 실행하면 됩니다. Hyperscale AI Computing 컴파일러가 자동으로 연산 작업을 병렬화하여 여러 GPU 자원에서 분산 처리합니다.
-
----
-
-**Q. Hyperscale AI Computing 서비스는 일반 GPU 서버와 어떤 차이점이 있나요?**
-
-**A.** Hyperscale AI Computing 서비스는 물리 GPU를 제공하는 대신 “KT AI Accelerator”라는 가상의 AI 가속기를 제공합니다. 기존 GPU 서버에서는 CUDA를 설치하고 CUDA 기반의 PyTorch를 설치하여 GPU를 사용하였습니다. 반면 Hyperscale AI Computing 서비스에서는 KT Cloud가 별도로 제공하는 PyTorch 버전을 사용해야 합니다. 여기에는 GPU 가상화 및 자동 병렬화를 위한 기능이 함께 포함되어 있습니다.
-
-![GPUvsHAC](./image/GPUvsHAC.png)
-
-기존 GPU 서버와 Hyperscale AI Computing 서비스 간의 차이점을 정리하자면 다음과 같습니다.
-
 
 ---
 
@@ -99,68 +68,6 @@ A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를
 
 ---
 
-**Q. PyTorch 프로그램을 실행하였는데 "Two or more processes cannot use KT AI Accelerator at the same time." 메시지가 출력되고 프로그램이 멈춰 있습니다.**
-
-**A.** Hyperscale AI Computing 서비스는 하나의 VM에서 AI 가속기를 사용하는 프로그램을 동시에 두 개 이상 실행할 수 없도록 되어 있습니다. 따라서 예를 들어 AI 가속기를 사용하는 train.py 프로그램이 실행 중인 동안 마찬가지로 AI 가속기를 사용하는 inference.py 프로그램을 실행할 경우, 나중에 실행한 프로그램은 메시지를 출력하고 앞에 실행한 프로그램이 끝날 때까지 대기하게 됩니다.
-
-```
-(pytorch) ubuntu@vm:~$ **python inference.py**
-...
-[info] Requesting resources for KT AI Accelerator from the server...
-[warning] KT AI Accelerator is already in use by another process:
-[warning]   (pid: 10000) python train.py
-[warning] Two or more processes cannot use KT AI Accelerator at the same time. The program will resume automatically after the process 10000 terminates...
-```
-
-만약 AI 가속기를 사용하는 다른 프로그램이 없는데도 위와 같은 메시지가 표시된다면 다음 질문을 참고하십시오.
-
----
-
-**Q. VM에서 실행 중인 다른 PyTorch 프로그램이 없음에도 불구하고 계속 "Two or more processes cannot use KT AI Accelerator at the same time." 메시지가 출력됩니다.**
-
-**A.** 일부 PyTorch 프로그램은 학습/추론 과정에서 데이터를 빠르게 불러 오기 위해 별도의 DataLoader 프로세스를 실행합니다. 이 경우 PyTorch 프로그램이 비정상 종료했을 때(예를 들어 Ctrl+C로 강제 종료했을 때) 주 프로세스는 없어지더라도 DataLoader 프로세스는 없어지지 않고 AI 가속기와 CPU 코어, 메인 메모리를 점유하면서 남아 있는 경우가 있습니다.
-
-현재 VM에 실행 중인 Python 프로세스가 존재하는지 ps aux | grep python 명령으로 확인할 수 있습니다. 또한 실행 중인 모든 Python 프로세스를 pkill python 명령으로 제거할 수 있습니다.
-
-```
-(pytorch) ubuntu@vm:~$ **ps aux | grep python**
-root      1700  0.0  0.0 169104 17136 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
-root      1900  0.0  0.0 185956 20112 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
-ubuntu    9900 84.1  0.1 3688828 508348 pts/1  Sl   08:50   0:18 python train.py
-ubuntu    9901 79.5  0.1 3671492 491104 pts/1  Sl   08:50   0:17 python train.py
-ubuntu    9902 65.4  0.1 3670744 490580 pts/1  Sl   08:50   0:14 python train.py
-ubuntu    9903 67.5  0.1 3671280 490440 pts/1  Sl   08:50   0:14 python train.py
-ubuntu   10000  0.0  0.0  14864  1116 pts/2    S+   08:51   0:00 grep --color=auto python
-(pytorch) ubuntu@vm:~$ **pkill python**
-(pytorch) ubuntu@vm:~$ **ps aux | grep python**
-root      1700  0.0  0.0 169104 17136 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
-root      1900  0.0  0.0 185956 20112 ?        Ssl  Dec03   0:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
-ubuntu   10001  0.0  0.0  14864  1116 pts/2    S+   08:51   0:00 grep --color=auto python
-```
-
-만약 실행 중인 Python 프로세스가 전혀 존재하지 않음에도 불구하고 위와 같은 메시지가 표시된다면 moreh-smi --reset 명령으로 GPU 자원을 강제로 할당 해제할 수 있습니다.
-
-```
-(pytorch) ubuntu@vm:~$ **moreh-smi --reset**
-Device release success.
-```
-
-이 두 가지 방법으로도 문제가 해결되지 않으면 기술 지원을 받으시기 바랍니다.
-
----
-
-**Q. PyTorch 프로그램을 실행하였는데 "Not enough resources are currently available for KT AI Accelerator." 메시지가 출력되고 프로그램이 멈춰 있습니다.**
-
-**A.** Hyperscale AI Computing 시스템에 동시에 너무 많은 자원 할당 요청이 들어 올 경우 일시적으로 GPU 자원의 신규 할당이 불가능할 수 있습니다. 이 경우 프로그램이 메시지를 출력하고 GPU 자원이 할당될 때까지 대기할 수 있습니다. 이 경우 가만히 있으면 GPU 자원을 할당 받은 이후 자동으로 실행이 재개됩니다.
-
-```
-(pytorch) ubuntu@vm:~$ **python train.py**
-...
-[info] Requesting resources for KT AI Accelerator from the server...
-[warning] Not enough resources are currently available for KT AI Accelerator. All resources in the system are being used by other users. The program will resume automatically when resources become available...
-```
-
----
 
 **Q. PyTorch 프로그램을 실행하였는데 "The current version of Moreh AI Framework is outdated and no longer supported in the system" 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
@@ -263,8 +170,6 @@ ZXhhbXBsZSB0b2tlbiBzdHI=
 **Q. PyTorch 프로그램을 실행하였는데 "Connecting to resources on the server" 메시지 직후에 "The connection to the server has been lost." 메시지가 출력되고 프로그램이 강제 종료됩니다.**
 
 ```
-[info] Requesting resources for KT AI Accelerator from the server...
-[info] Initializing the worker daemon for KT AI Accelerator...
 [info] [1/1] Connecting to resources on the server (192.168.00.00:00000)...
 [info] Establishing links to the resources...
 [error] The connection to the server has been lost. Please contact technical support if the problem persists.
