@@ -1,10 +1,10 @@
-# Moreh AI Framework Documentation
+# MoAI Documentation
 
-## Moreh AI Framework 란?
+## Moreh AI appliance for AI accelerators 란?
 
-Moreh AI Framework는 클러스터에 장착된 다양한 종류의 가속기에서 PyTorch 혹은 TensorFlow로 작성된 애플리케이션을 수정 없이 실행시키는 분산 딥러닝 프레임워크입니다.
+MoAI(Moreh AI appliance for AI accelerators)는 클러스터에 장착된 다양한 종류의 가속기에서 PyTorch 혹은 TensorFlow로 작성된 애플리케이션을 수정 없이 실행시키는 분산 딥러닝 프레임워크입니다.
 
-따라서 MAF를 통해 사용자는 컴파일러 기술의 도움으로 단일 칩에서 대형 클러스터에 이르기까지 다양한 프로세서와 다양한 시스템 규모에서 AI  문제에 집중할 수 있습니다.
+따라서 MoAI를 통해 사용자는 컴파일러 기술의 도움으로 단일 칩에서 대형 클러스터에 이르기까지 다양한 프로세서와 다양한 시스템 규모에서 AI  문제에 집중할 수 있습니다.
 
 ![HAC](./image/HAC.png)
 

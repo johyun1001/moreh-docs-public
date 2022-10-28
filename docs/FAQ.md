@@ -1,5 +1,6 @@
-# Moreh AI Framework FAQ
+# MoAI FAQ
 
+Moreh AI appliance for AI accelerators
 ---
 **이 문서는 처음 사용자를 위한 자주 묻는 질문과 답변을 제공합니다.** 
 

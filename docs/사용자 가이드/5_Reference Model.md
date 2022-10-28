@@ -1,4 +1,4 @@
-# Reference Model 다운받기 
+# Reference Model 
 
 **Reference Model (이하 RM) 이란?**
 

@@ -1,10 +1,10 @@
-# Moreh Apex
+# MoAI apex extension
 
 해당 페이지는 NVIDIA APEX(A PyTorch EXtention)을 사용할경우 어떻게 Moreh AI Framework에서 돌리는지에 대한 설명이 담겨져있는 페이지입니다.
 
 # NVIDIA APEX란?
 
-NVIDIA APEX는 모델 학습시 사용되는 Mixed Precision 기능과 Distributed Data Parallel(이하 DDP) 기능을 Pytorch에서 간편하게 사용할수있도록 만들어진 확장 라이브러리입니다.
+NVIDIA APEX는 모델 학습시 사용되는 Mixed Precision 기능 및 다양한 기능들을 Pytorch에서 간편하게 사용할수있도록 만들어진 확장 라이브러리입니다.
 
 - https://github.com/NVIDIA/apex
 

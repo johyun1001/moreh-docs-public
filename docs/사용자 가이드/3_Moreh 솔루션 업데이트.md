@@ -1,6 +1,6 @@
 # Moreh 솔루션 업데이트 하기
 
-Moreh AI Framework(MAF)를 업데이트하는 명령어입니다. 
+가속기를 업데이트하는 명령어입니다. 
 ```
 update-moreh
 ```
@@ -12,11 +12,10 @@ update-moreh
 ```
 --target
 ```
-
 Moreh AI Framework를 특정 버전으로 다운(업)그레이드를 할수있는 옵션입니다. `--target` 옵션뒤에는 특정 버전을 아래와 같이 기입 해주시면 됩니다.
 
 ```bash
-**update-moreh** --target 22.7.2
+update-moreh --target 22.7.2
 ```
 
 현재 Moreh 솔루션이 정상적으로 동작하지 않아 동일한 버전으로 다시 Moreh 솔루션을 설치하고 싶은 경우나, 원하는 타켓 버전으로 업(다운)그레이드가 정상적으로 되지 않을 경우 `--force` 옵션을 통해 강제로 Moreh 솔루션의 업데이트를 진행할 수 있습니다.
