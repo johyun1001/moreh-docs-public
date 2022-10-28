@@ -33,5 +33,5 @@ Client Version과 Server Version이 달라도 update-moreh를 진행해도 Moreh
 
 - (다운)그레이드 해도 server 버전에는 영향을 미치지 않으니 그대로 진행하시면 됩니다.
     
-    ![HAC](./image/updatemoreh.png)
-    
+![HAC](../image/updatemoreh.png)
+   
