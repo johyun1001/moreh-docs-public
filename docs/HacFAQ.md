@@ -267,6 +267,15 @@ A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를
 
 ---
 
+---
+**Q.  `moreh-smi`해보니 client version 과 server 버전이 다른데 `update-moreh`로 moreh 솔루션 업데이트를 진행해도 될까요?**
+    
+    ![HAC](./image/updatefaq.png)
+    
+**A.** client 버전을 업데이트 해도 server 버전에는 영향을 미치지 않기 때문에 변경된 버전들에서 RM 및 Pytorch 가 무리없이 정상적으로 동작합니다. 그대로 진행하시면 됩니다.
+
+---
+
 **Q. PyTorch 프로그램을 실행하였는데 "Two or more processes cannot use KT AI Accelerator at the same time." 메시지가 출력되고 프로그램이 멈춰 있습니다.**
 
 **A.** Hyperscale AI Computing 서비스는 하나의 VM에서 AI 가속기를 사용하는 프로그램을 동시에 두 개 이상 실행할 수 없도록 되어 있습니다. 따라서 예를 들어 AI 가속기를 사용하는 train.py 프로그램이 실행 중인 동안 마찬가지로 AI 가속기를 사용하는 inference.py 프로그램을 실행할 경우, 나중에 실행한 프로그램은 메시지를 출력하고 앞에 실행한 프로그램이 끝날 때까지 대기하게 됩니다.
