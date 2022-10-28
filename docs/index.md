@@ -1,4 +1,5 @@
-# MoAI Documentation
+# About MoAI
+
 
 ## Moreh AI appliance for AI accelerators 란?
 

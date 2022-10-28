@@ -1,4 +1,4 @@
-# MoAI apex extension
+# MoAI Pytorch extension
 
 해당 페이지는 NVIDIA APEX(A PyTorch EXtention)을 사용할경우 어떻게 Moreh AI Framework에서 돌리는지에 대한 설명이 담겨져있는 페이지입니다.
 
