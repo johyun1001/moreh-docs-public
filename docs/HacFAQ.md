@@ -267,9 +267,9 @@ A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를
 
 ---
 
-**Q.  `moreh-smi`해보니 client version 과 server 버전이 다른데 `update-moreh`로 moreh 솔루션 업데이트를 진행해도 될까요?**
+**Q.  `moreh-smi`를 실행했는데 client version 과 server 버전이 다릅니다. `update-moreh`로 moreh 솔루션 업데이트를 진행해도 될까요?**
     
-    ![HAC](./image/updatefaq.png)
+![Image](./image/updatefaq.png)
     
 **A.** client 버전을 업데이트 해도 server 버전에는 영향을 미치지 않기 때문에 변경된 버전들에서 RM 및 Pytorch 가 무리없이 정상적으로 동작합니다. 그대로 진행하시면 됩니다.
 

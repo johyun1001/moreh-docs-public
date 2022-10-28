@@ -13,7 +13,7 @@ update-moreh
 --target
 ```
 
-MAF를 특정 버전으로 다운(업)그레이드를 할수있는 옵션입니다. `--target` 옵션뒤에는 특정 버전을 아래와 같이 기입 해주시면 됩니다.
+Moreh AI Framework를 특정 버전으로 다운(업)그레이드를 할수있는 옵션입니다. `--target` 옵션뒤에는 특정 버전을 아래와 같이 기입 해주시면 됩니다.
 
 ```bash
 **update-moreh** --target 22.7.2
@@ -31,7 +31,7 @@ update-moreh --force
 
 Client Version과 Server Version이 달라도 update-moreh를 진행해도 Moreh 솔루션은 무리없이 변경된 버전들에서 RM 및 Pytorch 가 무리 없이 정상적으로 동작합니다. 
 
-- (다운)그레이드 해도 server 버전에는 영향을 미치지 않으니 그대로 진행하시면 됩니다.
+- Moreh 솔루션 버전 업(다운)그레이드 해도 server 버전에는 영향을 미치지 않으니 그대로 진행하시면 됩니다.
     
 ![HAC](../image/updatemoreh.png)
    
