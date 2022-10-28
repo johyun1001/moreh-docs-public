@@ -267,7 +267,6 @@ A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를
 
 ---
 
----
 **Q.  `moreh-smi`해보니 client version 과 server 버전이 다른데 `update-moreh`로 moreh 솔루션 업데이트를 진행해도 될까요?**
     
     ![HAC](./image/updatefaq.png)
