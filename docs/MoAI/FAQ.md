@@ -1,10 +1,18 @@
 # MoAI FAQ
 
-Moreh AI appliance for AI accelerators
 ---
 **이 문서는 처음 사용자를 위한 자주 묻는 질문과 답변을 제공합니다.** 
 
 ## 서비스 기본 개념
+
+---
+
+
+
+---
+
+
+## VM 및 AI 가속기 관련 문제 해결
 
 **Q. VM에서 lspci 혹은 nvidia-smi를 실행했는데 GPU가 인식이 되지 않습니다.**
 
@@ -47,12 +55,6 @@ Processes:
 AI 가속기는 PyTorch에서 `cuda:0` 디바이스로 인식되며, 기존 CUDA 디바이스와 호환되는 API를 제공합니다. 따라서 물리적인 GPU가 없더라도 기존에 NVIDIA GPU용으로 작성된 PyTorch 프로그램을 그대로 실행할 수 있습니다.
 
 ---
-
-
-## AI 가속기 관련 문제 해결
-
----
-
 **Q. VM 로그인 시 기본적으로 “pytorch”라는 Anaconda 가상 환경이 활성화됩니다. 다른 가상 환경을 만들 수는 없습니까?**
 
 A. “pytorch” 가상 환경에는 이미 Hyperscale AI Computing 서비스를 위한 각종 소프트웨어 설정이 완료되어 있으므로 가급적 해당 환경에서 시스템을 사용해 주시기를 권장 드립니다.
