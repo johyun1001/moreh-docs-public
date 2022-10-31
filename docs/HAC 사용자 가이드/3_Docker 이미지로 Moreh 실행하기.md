@@ -4,7 +4,7 @@
 
 Hyperscale AI Computing 서비스는 Docker 컨테이너 안에서 AI 가속기를 사용하는 PyTorch 프로그램을 실행할 수 있도록 전용 Docker 이미지를 제공하고 있습니다. VM에서 다음과 같이 실행하여 AI 가속기가 활성화된 컨테이너를 실행할 수 있습니다.
 
-```
+```bash
 (pytorch) ubuntu@vm:~$ **sudo moreh-docker-run**
 ...
 Login Succeeded
@@ -33,7 +33,7 @@ Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.1
 
 컨테이너 안에서 AI 가속기 정보를 조회하고 PyTorch 프로그램을 실행시킬 수 있습니다.
 
-```
+```bash
 (moreh) root@vm:~# **moreh-smi**
 +-------------------------------------------------------------------------------------------------+
 |  Moreh-SMI 22.10.2                            Client Version: 22.10.2  Server Version: 22.10.2  |
@@ -77,7 +77,7 @@ loss: 2.270298  [12800/60000]
 
 컨테이너 안에서 인식되는 AI 가속기는 VM에 할당된 AI 가속기와 동일한 것입니다. VM에서 가속기 모델을 변경하면 컨테이너 안에서도 적용되며 그 반대도 마찬가지입니다. 또한 VM에서 AI 가속기를 사용하는 동안은 컨테이너 안에서는 AI 가속기를 사용할 수 없으며 이것 역시 반대도 마찬가지입니다. 예를 들어 VM에서 AI 가속기를 사용하는 train.py 프로그램이 실행 중인 동안 컨테이너에서 AI 가속기를 사용하는 다른 프로그램을 실행할 경우, 아래와 같은 메시지를 출력하고 VM에서 train.py 프로그램이 끝날 때까지 대기하게 됩니다.
 
-```
+```bash
 (moreh) root@vm:~# **python pytorch-sample.py**
 ...
 [info] Requesting resources for KT AI Accelerator from the server...
@@ -97,7 +97,7 @@ loss: 2.270298  [12800/60000]
 
 위와 다르게, 단순히 Moreh 솔루션 이미지만 내려받고 싶으시다면 `**—-pullonly (-p)**` 옵션을 활용하여 이미지를 내려받을수 있습니다.
 
-```
+```bash
 (pytorch) ubuntu@vm:~$ **sudo moreh-docker-run --pullonly**
 ...
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
@@ -139,7 +139,7 @@ sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.1
 
 ### 3. Docker Image 실행
 
-```
+```bash
 moreh-docker-run
 ```
 
