@@ -7,7 +7,7 @@ Moreh framework 에서 학습, 추론이 가능한 딥러닝 모델을 의미합
 
 아래 간단한 명령어 한 줄로 다양한 Reference Model(이하 RM) Code를 얻을 수 있습니다. 
 
-```
+```bash
 get-reference-model resnet
 ```
 
@@ -33,6 +33,6 @@ get-reference-model -h
 
 만일, 모델 설치 파일(.sh)에 대해서 수정 사항이 필요할 경우엔 아래와 같이 `--download-only` 옵션을 추가하여 모델 설치 파일만 다운로드 받으실수도 있습니다. 해당 옵션을 추가하고 실행하면 실행경로에 `install_MODEL_NAME.sh` 파일이 생성됩니다.
 
-```
+```bash
 get-reference-model --download-only resnet
 ```
