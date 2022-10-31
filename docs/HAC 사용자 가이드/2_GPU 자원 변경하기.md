@@ -7,7 +7,7 @@ SDA를 변경하여 VM에서 사용할 GPU 자원의 양을 조정할 수 있습
 
 </aside>
 
-```bash
+```shell
 moreh-switch-model
 ```
 
@@ -20,7 +20,7 @@ moreh-switch-model 툴은 SDA를 변경하는 **대화형** 명령어입니다. 
 
 </aside>
 
-```bash
+```shell
 (pytorch) ubuntu@moreh-server:~$ moreh-switch-model
 
 Current KT AI Accelerator: 3xLarge.1536GB
