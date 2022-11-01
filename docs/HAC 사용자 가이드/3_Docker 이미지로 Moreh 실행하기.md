@@ -133,7 +133,7 @@ sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.1
     - VM의 /etc/moreh 디렉터리에는 AI 가속기 사용 시 resource farm에 접속하기 위한 정보가 저장되어 있습니다. -v /etc/moreh:/etc/moreh 옵션은 컨테이너 안에서도 /etc/moreh 디렉터리에 resource farm 접속 정보가 저장되도록 합니다. 컨테이너가 실행된 후 moreh-smi 명령이 에러 없이 실행된다면 옵션이 정상적으로 적용된 것입니다.
 
 ```jsx
-(pytorch) ubuntu@vm:~$ **sudo docker run --rm -it --net=host --privileged -v /etc/moreh:/etc/moreh sys.deploy.kt-epc.moreh.io:5001/moreh:latest /bin/bash**
+(pytorch) ubuntu@vm:~$ sudo docker run --rm -it --net=host --privileged -v /etc/moreh:/etc/moreh sys.deploy.kt-epc.moreh.io:5001/moreh:latest /bin/bash
 (moreh) root@vm:~#
 ```
 
