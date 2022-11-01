@@ -48,7 +48,7 @@ Processes:
 |  Device  |  Job ID  |  PID  |  Process  |  Memory Usage  |
 +==========================================================+
 +----------------------------------------------------------+
-(moreh) root@vm:~# **python pytorch-sample.py**
+(moreh) root@vm:~# python pytorch-sample.py
 Downloading http://fashion-mnist.s3-website.eu-central-1.amazonaws.com/train-images-idx3-ubyte.gz to data/FashionMNIST/raw/train-images-idx3-ubyte.gz
 26427392it [00:04, 5389702.34it/s]
 Extracting data/FashionMNIST/raw/train-images-idx3-ubyte.gz to data/FashionMNIST/raw
@@ -151,10 +151,10 @@ Moreh 솔루션이 담긴 Docker Image를 실행합니다. 추가적으로 다�
 
 해당 옵션값을 추가로 줄경우, Moreh 솔루션 이미지를 바로 실행하지않고 단순히 다운로드 받게 됩니다.
 
-해당 옵션값을 사용할때는 `**--target**` 옵션값을 추가로 사용 할 수 있으며, `**--target**`옵션 값 뒤에는 아래 예시 명령어와 같이 버전을 명시해줘야합니다. 만일 없을 경우 최신버전 이미지를 가져오게됩니다.
+해당 옵션값을 사용할때는 `--target` 옵션값을 추가로 사용 할 수 있으며, `--target`옵션 값 뒤에는 아래 예시 명령어와 같이 버전을 명시해줘야합니다. 만일 없을 경우 최신버전 이미지를 가져오게됩니다.
 
 ```shell
-(pytorch) ubuntu@vm:~$ **sudo** **moreh-docker-run --pullonly --target** 22.10.1
+(pytorch) ubuntu@vm:~$ sudo moreh-docker-run --pullonly --target 22.10.1
 ```
 
 **--version (-v)**
