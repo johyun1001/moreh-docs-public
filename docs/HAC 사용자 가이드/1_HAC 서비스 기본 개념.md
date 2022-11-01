@@ -15,7 +15,7 @@
 
 ![GPUvsHAC](../image/GPUvsHAC.png)
 
-기존 GPU 서버와 Hyperscale AI Computing 서비스 간의 차이점을 정리하자면 다음과 같습니다.
+기존 GPU 서버와 Hyperscale AI Computing 서비스 간의 차이점을 정리하자면 위와 같습니다.
 
 ---
 
@@ -23,13 +23,6 @@
 
 **A.** 아니오. PyTorch API를 사용하지 않고 CUDA를 직접 사용하거나 별도의 CUDA 기반 third-party library를 사용하는 경우 Hyperscale AI Computing 서비스에서 실행이 불가능합니다. 이 경우 일반 GPU Server를 사용하여 주십시오.
 
-
-
-**A.** Hyperscale AI Computing 서비스는 물리 GPU를 제공하는 대신 “KT AI Accelerator”라는 가상의 AI 가속기를 제공합니다. 기존 GPU 서버에서는 CUDA를 설치하고 CUDA 기반의 PyTorch를 설치하여 GPU를 사용하였습니다. 반면 Hyperscale AI Computing 서비스에서는 KT Cloud가 별도로 제공하는 PyTorch 버전을 사용해야 합니다. 여기에는 GPU 가상화 및 자동 병렬화를 위한 기능이 함께 포함되어 있습니다.
-
-![GPUvsHAC](../image/GPUvsHAC.png)
-
-기존 GPU 서버와 Hyperscale AI Computing 서비스 간의 차이점을 정리하자면 다음과 같습니다.
 
 
 ---

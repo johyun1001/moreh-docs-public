@@ -21,7 +21,7 @@ moreh-switch-model 툴은 SDA를 변경하는 **대화형** 명령어입니다. 
 </aside>
 
 ```shell
-(pytorch) ubuntu@moreh-server:~$ moreh-switch-model
+(pytorch) ubuntu@vm:~$ moreh-switch-model
 
 Current KT AI Accelerator: 3xLarge.1536GB
 1. Small.64GB
