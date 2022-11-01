@@ -5,7 +5,7 @@
 Hyperscale AI Computing 서비스는 Docker 컨테이너 안에서 AI 가속기를 사용하는 PyTorch 프로그램을 실행할 수 있도록 전용 Docker 이미지를 제공하고 있습니다. VM에서 다음과 같이 실행하여 AI 가속기가 활성화된 컨테이너를 실행할 수 있습니다.
 
 ```shell
-(pytorch) ubuntu@vm:~$ **sudo moreh-docker-run**
+(pytorch) ubuntu@vm:~$ sudo moreh-docker-run
 ...
 Login Succeeded
 Unable to find image 'sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.2' locally
@@ -16,10 +16,10 @@ Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.2
 (moreh) root@vm:~#
 ```
 
-만일, 특정 버전의 Moreh 솔루션 이미지를 실행하고싶다면, 위 명령어 뒤에 `**—-target**`이라는 옵션을 추가하여 원하시는 Moreh 솔루션 버전 docker 이미지를 실행하실수가 있습니다. 만일 해당 옵션없이 `**moreh-docker-run**`을 실행하면 현재까지 배포된 Moreh 솔루션중 최신 버전으로 이미지를 실행하게 됩니다.
+만일, 특정 버전의 Moreh 솔루션 이미지를 실행하고싶다면, 위 명령어 뒤에 `—-target`이라는 옵션을 추가하여 원하시는 Moreh 솔루션 버전 docker 이미지를 실행하실수가 있습니다. 만일 해당 옵션없이 `moreh-docker-run`을 실행하면 현재까지 배포된 Moreh 솔루션중 최신 버전으로 이미지를 실행하게 됩니다.
 
 ```shell
-(pytorch) ubuntu@vm:~$ **sudo moreh-docker-run --target** 22.10.1
+(pytorch) ubuntu@vm:~$ sudo moreh-docker-run --target 22.10.1
 ...
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
@@ -34,7 +34,7 @@ Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.1
 컨테이너 안에서 AI 가속기 정보를 조회하고 PyTorch 프로그램을 실행시킬 수 있습니다.
 
 ```shell
-(moreh) root@vm:~# **moreh-smi**
+(moreh) root@vm:~# moreh-smi
 +-------------------------------------------------------------------------------------------------+
 |  Moreh-SMI 22.10.2                            Client Version: 22.10.2  Server Version: 22.10.2  |
 +-------------------------------------------------------------------------------------------------+
@@ -78,7 +78,7 @@ loss: 2.270298  [12800/60000]
 컨테이너 안에서 인식되는 AI 가속기는 VM에 할당된 AI 가속기와 동일한 것입니다. VM에서 가속기 모델을 변경하면 컨테이너 안에서도 적용되며 그 반대도 마찬가지입니다. 또한 VM에서 AI 가속기를 사용하는 동안은 컨테이너 안에서는 AI 가속기를 사용할 수 없으며 이것 역시 반대도 마찬가지입니다. 예를 들어 VM에서 AI 가속기를 사용하는 train.py 프로그램이 실행 중인 동안 컨테이너에서 AI 가속기를 사용하는 다른 프로그램을 실행할 경우, 아래와 같은 메시지를 출력하고 VM에서 train.py 프로그램이 끝날 때까지 대기하게 됩니다.
 
 ```shell
-(moreh) root@vm:~# **python pytorch-sample.py**
+(moreh) root@vm:~# python pytorch-sample.py
 ...
 [info] Requesting resources for KT AI Accelerator from the server...
 [warning] KT AI Accelerator is already in use by another process:
@@ -95,10 +95,10 @@ loss: 2.270298  [12800/60000]
 
 ### 1. 이미지 내려받기
 
-위와 다르게, 단순히 Moreh 솔루션 이미지만 내려받고 싶으시다면 `**—-pullonly (-p)**` 옵션을 활용하여 이미지를 내려받을수 있습니다.
+위와 다르게, 단순히 Moreh 솔루션 이미지만 내려받고 싶으시다면 `—-pullonly (-p)` 옵션을 활용하여 이미지를 내려받을수 있습니다.
 
 ```shell
-(pytorch) ubuntu@vm:~$ **sudo moreh-docker-run --pullonly**
+(pytorch) ubuntu@vm:~$ sudo moreh-docker-run --pullonly
 ...
 https://docs.docker.com/engine/reference/commandline/login/#credentials-store
 Login Succeeded
@@ -109,7 +109,7 @@ Status: Downloaded newer image for sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.2
 sys.deploy.kt-epc.moreh.io:5001/moreh:22.10.2
 ```
 
-해당 명령어도 위와 동일하게 만일 특정 버전의 Moreh 솔루션 이미지를 내려받고싶다면, `**—-target**` 옵션 추가로 이를 수행하실수가 있습니다. 만일 해당 옵션없이 `**moreh-docker-run --pullonly**`을 실행하면 현재까지 배포된 Moreh 솔루션중 최신 버전으로 이미지를 실행하게 됩니다.
+해당 명령어도 위와 동일하게 만일 특정 버전의 Moreh 솔루션 이미지를 내려받고싶다면, `—-target` 옵션 추가로 이를 수행하실수가 있습니다. 만일 해당 옵션없이 `moreh-docker-run --pullonly`을 실행하면 현재까지 배포된 Moreh 솔루션중 최신 버전으로 이미지를 실행하게 됩니다.
 
 ```shell
 (pytorch) ubuntu@vm:~$ sudo moreh-docker-run --pullonly --target 22.10.1
